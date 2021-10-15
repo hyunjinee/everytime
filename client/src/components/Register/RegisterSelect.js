@@ -1,26 +1,18 @@
 import React from 'react'
 import styled from 'styled-components'
-
-
-
-export default function RegisterInput({
-	labelName,
-	name,
-	type,
-	placeholder,
-	onChange,
-	value,
-}) {
+export default function RegisterSelect({ labelName, handleOption, option, dataArr}) {
 	return (
 		<StyledLabel>
 			{labelName}
-			<StyledInput
-				name={name}
-				type={type}
-				placeholder={placeholder}
-				onChange={onChange}
-				value={value}
-			/>
+			<StyledSelect onChange={handleOption} value={option}>
+				{dataArr.map((data, index) => {
+					return (
+						<option value={data} key={index}>
+							{data}
+						</option>
+					)
+				})}
+			</StyledSelect>
 		</StyledLabel>
 	)
 }
@@ -30,18 +22,20 @@ const StyledLabel = styled.label`
 	color: #777;
 	padding-left: 5px;
 `
-const StyledInput = styled.input`
+const StyledSelect = styled.select`
 	width: 100%;
 	outline: none;
 	border: 1px solid #ededed;
 	border-radius: 12px;
+	box-sizing: border-box;
 	color: #333;
 	padding-left: 0.5rem;
 	padding-right: 0.5rem;
 	background: #f9f9f9;
-	&:focus {
+	cd &:focus {
 		background: #fff;
 	}
 	height: 40px;
-	margin: 4px 0;
+	margin-top: 4px;
+	margin-bottom: 8px;
 `
