@@ -1,4 +1,5 @@
 import React from 'react'
+import styled from 'styled-components'
 
 export default function Home() {
 	return (
@@ -7,3 +8,8 @@ export default function Home() {
 		</div>
 	)
 }
+
+
+const Side = styled.aside`
+
+`
