@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap");
+=======
+@charset "utf-8";
+>>>>>>> 30090e2d9f264f06c142034a2a9f10ef65e6fd95
 
 * {
   margin: 0;
   padding: 0;
+<<<<<<< HEAD
   font-family: "Noto Sans KR", sans-serif;
   letter-spacing: -0.02rem;
 }
@@ -16,4 +21,75 @@ button {
   outline: none;
   border: none;
   cursor: pointer;
+=======
+}
+
+body {
+  background: #fff;
+}
+
+img,
+input,
+select,
+textarea {
+  vertical-align: middle;
+}
+
+body,
+div,
+nav,
+aside,
+article,
+h1,
+h2,
+h3,
+h4,
+ol,
+ul,
+li,
+dl,
+dt,
+dd,
+p,
+span,
+form,
+th,
+td,
+input,
+textarea,
+select,
+pre,
+address {
+  color: #666;
+  font-family: "맑은 고딕", 돋움, tahoma;
+  _font-family: 돋움, tahoma;
+  font-size: 12px;
+  letter-spacing: -0.5px;
+}
+
+input {
+  text-decoration: none;
+  outline: none;
+  border: none;
+  box-sizing: border-box;
+}
+
+button {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  list-style: none;
+>>>>>>> 30090e2d9f264f06c142034a2a9f10ef65e6fd95
 }
