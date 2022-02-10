@@ -50,6 +50,17 @@ module.exports = {
         ],
         exclude: /node_modules/,
       },
+      {
+        test: /\.png$/,
+        use: {
+          loader: 'url-loader',
+          options: {
+            publicPath: './src/assets',
+            name: '[name].[ext]?[hash]',
+            limit: 5000,
+          },
+        },
+      },
     ],
   },
   plugins: [
