@@ -10,13 +10,11 @@ const Login = () => {
   if (window.sessionStorage) window.sessionStorage.clear();
 
   return (
-    <>
-      <Layout>
-        <Logo />
-        <LoginContent />
-        <Footer />
-      </Layout>
-    </>
+    <Layout>
+      <Logo />
+      <LoginContent />
+      <Footer />
+    </Layout>
   );
 };
 

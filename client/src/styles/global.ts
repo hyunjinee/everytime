@@ -7,10 +7,13 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    border: 0;
   }
   body {
     width: 100vw;
     height: 100vh;
+    font-family: "맑은 고딕","돋움","Apple SD Gothic Neo",sans-serif;
+    letter-spacing: -0.5px;
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
     &::-webkit-scrollbar {
@@ -44,6 +47,9 @@ input,
 select,
 textarea {
   vertical-align: middle;
+  outline: none;
+  -webkit-appearance: none;
+  -webkit-writing-mode: horizontal-tb !important;
 }
 
 body,

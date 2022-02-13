@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import logo from '@/assets/index.login.logo.png';
+import logo from '@assets/index.login.logo.png';
 import Input from '@atoms/Input';
 import Button from '@atoms/Button';
 

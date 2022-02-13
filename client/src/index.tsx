@@ -9,16 +9,7 @@ import logger from 'redux-logger';
 
 import App from './App';
 import GlobalStyle from '@styles/global';
-
-const ADD = 'ADD';
-const DELETE = 'DELETE';
-
-const reducer = () => {};
-
-const store = createStore(
-  reducer,
-  composeWithDevTools(applyMiddleware(logger, thunk))
-);
+import store from './store';
 
 ReactDOM.render(
   <BrowserRouter>
