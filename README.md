@@ -4,14 +4,16 @@
 
 ## 기술 스택
 
-| 분야           | 사용 기술                       | 비고  |
-| -------------- | ------------------------------- | ----- | --- |
-| FrontEnd       | React, TypeScript               |
+
+| 분야           | 사용 기술                       | 비고 |
+| -------------- | ------------------------------- | ---- |
+| FrontEnd       | React, TypeScript            |
 | BackEnd        | Express                         |
-| Database       | MongoDB                         |
+| Database       | MongoDB           |
 | Cloud Services | AWS EC2, AWS Cloudfront, AWS S3 |
-| TOOL           | VSCODE, Notion                  |
-| <!--           | DESIGN                          | Figma | --> |
+| TOOL           | VSCODE, Notion           |
+<!-- | DESIGN         | Figma                           |
+ -->
 
 <!-- <br/>
 <p align="center">
