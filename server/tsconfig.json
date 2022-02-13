@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "outDir": "dist",
+    "strict": true,
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["./*"],
+      "@apis/*": ["./routes/api/*"],
+      "@models/*": ["./models/*"],
+      "@controllers/*": ["./controllers/*"],
+      "@loaders/*": ["./loaders/*"],
+      "@services/*": ["./services/*"],
+      "@interfaces/*": ["./interfaces/*"],
+      "@utils/*": ["./utils/*"]
+    },
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["src/**/*.ts", "spec/**/*.ts"],
+  "exclude": ["src/public"]
+}
