@@ -81,29 +81,29 @@ export const getUser = () => async () => {
   const response = await axios.get('');
 };
 
-export const fetchPosts = () => async (dispatch, getState) => {
-  dispatch({ type: 'FETCH_POSTS_REQUEST' });
-  try {
-    const response = await axios.get(
-      'https://jsonplaceholder.typicode.com/posts'
-    );
-
-    dispatch({ type: 'FETCH_POSTS_SUCCESS', payload: response.data });
-  } catch (error) {
-    dispatch({ type: 'FETCH_POSTS_FAILURE', error: error });
-  }
-};
-
-export const register = (user) => async (dispatch) => {
+export const register = (user: IUser) => async (dispatch) => {
   dispatch({ type: REGISTER_REQUEST });
   try {
     const response = await axios.post(
       'http://localhost:3001/api/user/register',
       user
     );
-    console.log(response.data);
-    dispatch({ type: REGISTER_SUCCESS, payload: response.data });
+    const userData = response.data.user;
+    dispatch({ type: REGISTER_SUCCESS, payload: userData });
   } catch (error) {
     dispatch({ type: REGISTER_FAILURE, error: error });
   }
 };
+
+// export const fetchPosts = () => async (dispatch, getState) => {
+//   dispatch({ type: 'FETCH_POSTS_REQUEST' });
+//   try {
+//     const response = await axios.get(
+//       'https://jsonplaceholder.typicode.com/posts'
+//     );
+
+//     dispatch({ type: 'FETCH_POSTS_SUCCESS', payload: response.data });
+//   } catch (error) {
+//     dispatch({ type: 'FETCH_POSTS_FAILURE', error: error });
+//   }
+// };

@@ -36,7 +36,7 @@ const userReducer = (state = initailState, action: any) => {
     case REGISTER_REQUEST:
       return { ...state, loading: true };
     case REGISTER_SUCCESS:
-      return { loading: false, user: action.payload, error: '' };
+      return { loading: false, user: {}, error: '' };
     case REGISTER_FAILURE:
       return { loading: false, user: {}, error: action.payload };
     default:
