@@ -17,5 +17,8 @@ Content-Type: application/json
 
 }
 
+### 
+# test throwing error
+GET {{endpoint}}/user/test
 
 

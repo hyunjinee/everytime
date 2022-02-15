@@ -4,6 +4,8 @@ import { Routes, Route } from 'react-router-dom';
 import Login from '@pages/Login';
 import Test from '@pages/Test';
 import Register from '@pages/Register';
+import Board from '@pages/Board';
+import PrivateRoute from './PrivateRoutes';
 
 const Router = (): JSX.Element => {
   return (
@@ -11,6 +13,14 @@ const Router = (): JSX.Element => {
       <Route path="/" element={<div>Hello</div>} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
+      <Route
+        path="/board"
+        element={
+          <PrivateRoute>
+            <Board />
+          </PrivateRoute>
+        }
+      />
       <Route path="/test" element={<Test />} />
     </Routes>
   );

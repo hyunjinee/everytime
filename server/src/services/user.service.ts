@@ -1,5 +1,7 @@
-import User from "../models/user";
 import { Request, Response } from "express";
+import bcrypt from "bcrypt";
+
+import User from "../models/user";
 import StatusCodes from "http-status-codes";
 
 const { BAD_REQUEST, OK } = StatusCodes;
@@ -45,7 +47,7 @@ export const createUser = async (req: Request, res: Response) => {
     // user.serialize();
     // console.log(user);
     // user.serialize();
-    return res.status(OK).json({ user });
+    return res.status(OK).json(user);
   } catch (error) {
     return res.status(BAD_REQUEST).json(error);
   }
@@ -77,4 +79,21 @@ export const register = async (req: Request, res: Response) => {
   } catch (error) {
     console.log(error);
   }
+};
+
+export const login = async (req: Request, res: Response) => {
+  const { id, password } = req.body;
+  const user = await User.findOne({ id });
+  if (user && (await bcrypt.compare(password, user.password))) {
+    res.json({
+      id: user.id,
+    });
+  } else {
+    res.status(400).json({ message: "아이디 비밀번호가 맞지 않습니다." });
+  }
+};
+
+export const testThrowingError = (req: Request, res: Response) => {
+  // throw new Error("테스트에러용");
+  return res.json({ message: "test" });
 };

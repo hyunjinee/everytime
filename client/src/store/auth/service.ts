@@ -21,11 +21,13 @@ const register = async (userData: IUser) => {
 };
 
 const login = async (userData: Partial<IUser>) => {
-  const response = await axios.post('http://localhost:3001/api/user/login');
+  const response = await axios.post('/api/user/login', userData);
 
   if (response.data) {
     localStorage.setItem('user', JSON.stringify(response.data));
   }
+
+  return response.data;
 };
 
 const logout = () => {

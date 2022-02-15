@@ -6,12 +6,16 @@ import useInputs from '@hooks/useInputs';
 import { RootState } from '@store/index';
 import { toast } from 'react-toastify';
 import { Container, Id, Password, LoginButton } from './style';
+import { login } from '@store/auth/action';
 
 const initialData = {
   id: '',
   password: '',
 };
-
+/**
+ * TODO
+ *
+ */
 const LoginContent = (): JSX.Element => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -23,15 +27,9 @@ const LoginContent = (): JSX.Element => {
       return;
     }
     const userData = { id, password };
+    dispatch(login(userData));
   };
-  useEffect(() => {
-    const user = localStorage.getItem('user');
-    // user = JSON.parse(user);
-    console.log(user, '유저없음?');
-    if (user) {
-      navigate('/board');
-    }
-  }, [navigate]);
+  useEffect(() => {}, [navigate]);
 
   return (
     <Container>

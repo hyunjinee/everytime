@@ -1,9 +1,12 @@
-import { IUser } from './../user/action';
+import { IUser } from './action';
 import {
   REGISTER_RESET,
   REGISTER_FAILURE,
   REGISTER_SUCCESS,
   REGISTER_REQUEST,
+  LOGIN_SUCCESS,
+  LOGIN_REQUEST,
+  LOGIN_FAILURE,
 } from './action';
 
 // Get user from localStorage
@@ -25,7 +28,7 @@ const initailState = {
   message: '',
 };
 
-const authReducer = (state: AuthState = initailState, action) => {
+const authReducer = (state: AuthState = initailState, action: any) => {
   switch (action.type) {
     case REGISTER_RESET:
       return {
@@ -50,6 +53,17 @@ const authReducer = (state: AuthState = initailState, action) => {
         isLoading: false,
         isError: true,
         message: action.payload,
+      };
+    case REGISTER_RESET:
+      return initailState;
+    case LOGIN_REQUEST:
+      return { ...state, isLoading: true };
+    case LOGIN_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        isSuccess: true,
+        user: action.payload,
       };
     default:
       return state;
