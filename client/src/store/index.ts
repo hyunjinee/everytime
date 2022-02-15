@@ -3,13 +3,14 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import logger from 'redux-logger';
 
-import userReducer from './user/reducer';
+import authReducer, { AuthState } from './auth/reducer';
 
 export interface Store {
+  auth: AuthState;
   // user: UserState;
 }
 
-const rootReducer = combineReducers({ user: userReducer });
+const rootReducer = combineReducers({ auth: authReducer });
 
 const store = createStore(
   rootReducer,

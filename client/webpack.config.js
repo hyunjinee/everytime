@@ -27,6 +27,9 @@ module.exports = {
     hot: true,
     open: true,
     historyApiFallback: true,
+    proxy: {
+      '/api': 'http://localhost:3001',
+    },
   },
   output: {
     path: path.join(__dirname, 'dist'),
@@ -61,6 +64,10 @@ module.exports = {
             limit: 5000,
           },
         },
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
       },
     ],
   },
