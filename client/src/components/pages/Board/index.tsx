@@ -1,7 +1,17 @@
 import React from 'react';
 
-const Board = () => {
-  return <div>Board</div>;
+import BoardHeader from '@organisms/BoardHeader';
+import BoardSubMenu from '@organisms/BoardSubMenu';
+import BoardContent from '@organisms/BoardContent';
+
+const Board = (): JSX.Element => {
+  return (
+    <>
+      <BoardHeader />
+      <BoardSubMenu />
+      <BoardContent />
+    </>
+  );
 };
 
 export default Board;

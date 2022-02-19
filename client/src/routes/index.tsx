@@ -21,6 +21,7 @@ const Router = (): JSX.Element => {
           </PrivateRoute>
         }
       />
+      <Route path="/boardtest" element={<Board />} />
       <Route path="/test" element={<Test />} />
     </Routes>
   );
