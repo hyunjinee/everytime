@@ -19,7 +19,7 @@ interface BoardDocument extends IBoard, mongoose.Document {}
 
 // interface BoardModel extends mongoose.Model<BoardDoc> {}
 
-const BoardSchema = new mongoose.Schema({
+const boardSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true,
@@ -37,4 +37,4 @@ const BoardSchema = new mongoose.Schema({
   },
 });
 
-export const Board = mongoose.model<BoardDocument>("Board", BoardSchema);
+export const Board = mongoose.model<BoardDocument>("Board", boardSchema);

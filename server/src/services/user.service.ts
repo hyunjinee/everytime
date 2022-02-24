@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
 import bcrypt from "bcrypt";
+import StatusCodes from "http-status-codes";
 
 import User from "../models/user";
-import StatusCodes from "http-status-codes";
 
 const { BAD_REQUEST, OK } = StatusCodes;
 
