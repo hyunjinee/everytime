@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -19,17 +19,25 @@ const initialData = {
 const LoginContent = (): JSX.Element => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  // const { user } = useSelector((state: RootState) => state.auth);
+  const { user, isError, isLoading, isSuccess, message } = useSelector(
+    (state: RootState) => state.auth
+  );
   const [{ id, password }, onChange] = useInputs(initialData);
   const handleLogin = () => {
-    if (id.length < 8 || password.length < 1) {
+    if (id.length < 1 || password.length < 1) {
       toast('아이디 비밀번호를 다시 입력해주세요.');
       return;
     }
     const userData = { id, password };
     dispatch(login(userData));
   };
-  useEffect(() => {}, [navigate]);
+
+  useEffect(() => {
+    if (isError) toast.error(message);
+    if (isSuccess || user) {
+      navigate('/boardtest');
+    }
+  }, [dispatch, navigate, isError, message, isSuccess, user]);
 
   return (
     <Container>

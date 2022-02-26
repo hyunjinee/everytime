@@ -26,9 +26,11 @@ export const register = (userData: IUser) => async (dispatch) => {
     dispatch({ type: REGISTER_SUCCESS, payload: user });
   } catch (error) {
     const message =
-      (error.response && error.response.data && error.response.data.message) ||
-      error.message ||
-      error.toString();
+      (error.response && error.response.data.message) || error.message;
+    // const message =
+    //   (error.response && error.response.data && error.response.data.message) ||
+    //   error.message ||
+    //   error.toString();
     dispatch({ type: REGISTER_FAILURE, payload: message });
   }
 };
@@ -40,9 +42,12 @@ export const login = (userData: Partial<IUser>) => async (dispatch) => {
     dispatch({ type: LOGIN_SUCCESS, payload: user });
   } catch (error) {
     const message =
-      (error.response && error.response.data && error.response.data.message) ||
-      error.message ||
-      error.toString();
+      (error.response && error.response.data.message) || error.message;
+    console.log(message, 'dddd');
+    // const message =
+    //   (error.response && error.response.data && error.response.data.message) ||
+    //   error.message ||
+    //   error.toString();
     dispatch({ type: REGISTER_FAILURE, payload: message });
   }
 };

@@ -31,13 +31,7 @@ const initailState = {
 const authReducer = (state: AuthState = initailState, action: any) => {
   switch (action.type) {
     case REGISTER_RESET:
-      return {
-        isLoading: false,
-        isError: false,
-        isSuccess: false,
-        message: '',
-        user: null,
-      };
+      return initailState;
     case REGISTER_REQUEST:
       return { ...state, isLoading: true };
     case REGISTER_SUCCESS:
@@ -61,9 +55,18 @@ const authReducer = (state: AuthState = initailState, action: any) => {
     case LOGIN_SUCCESS:
       return {
         ...state,
+        isError: false,
         isLoading: false,
         isSuccess: true,
         user: action.payload,
+      };
+    case LOGIN_FAILURE:
+      return {
+        ...state,
+        isError: true,
+        isLoading: false,
+        isSuccess: false,
+        message: action.payload,
       };
     default:
       return state;

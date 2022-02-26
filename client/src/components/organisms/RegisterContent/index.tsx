@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import RegisterIntroduce from '@molecules/RegisterIntroduce';
 import RegisterInputContainer from '@molecules/RegisterInputContainer';
 import { RootState } from '@store/index';
-import { register } from '@store/auth/action';
+import { register, reset } from '@store/auth/action';
 import useInputs from '@hooks/useInputs';
 import {
   YearSelect,
@@ -14,9 +14,10 @@ import {
   PasswordInput,
   IdInput,
   SchoolInput,
+  NickNameInput,
 } from './style';
 import { yearList } from '@libs/staticData';
-import Spinner from '@/components/atoms/Spinner';
+import Spinner from '@atoms/Spinner';
 
 const RegisterContent = () => {
   const dispatch = useDispatch();
@@ -25,10 +26,11 @@ const RegisterContent = () => {
     (state: RootState) => state.auth
   );
   const [entranceYear, setEntranceYear] = useState('2022학번');
-  const [form, onChange, reset] = useInputs({
+  const [form, onChange] = useInputs({
     id: '',
     password: '',
     school: '',
+    nickname: '',
   });
   const onChangeEntranceYear = useCallback(
     (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -38,7 +40,7 @@ const RegisterContent = () => {
   );
 
   const handleRegister = useCallback(() => {
-    if (form.id.length < 8) {
+    if (form.id.length < 4) {
       toast('아이디를 더 길게 입력해 주세요.');
       return;
     }
@@ -51,13 +53,11 @@ const RegisterContent = () => {
       toast(message);
     }
     if (isSuccess || user) {
-      toast('로그인에 성공했습니다.');
-      navigate('/');
+      toast('회원가입에 성공했습니다.');
+      dispatch(reset());
+      navigate('/login');
     }
   }, [user, isError, isSuccess, message, navigate, dispatch]);
-
-  // console.log(user, '유저용');
-  // console.log(entranceYear, form);
 
   if (isLoading) {
     return <Spinner />;
@@ -81,11 +81,20 @@ const RegisterContent = () => {
           value={form.school}
         />
       </RegisterInputContainer>
+      <RegisterInputContainer labelTitle="닉네임">
+        <NickNameInput
+          placeholder="닉네임"
+          onChange={onChange}
+          name="nickname"
+          value={form.nickname}
+        />
+      </RegisterInputContainer>
       <RegisterInputContainer labelTitle="아이디">
         <IdInput placeholder="아이디" onChange={onChange} name="id" />
       </RegisterInputContainer>
       <RegisterInputContainer labelTitle="비밀번호">
         <PasswordInput
+          type="password"
           placeholder="비밀번호"
           onChange={onChange}
           name="password"

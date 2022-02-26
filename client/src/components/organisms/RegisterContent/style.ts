@@ -49,8 +49,8 @@ export const IdInput = styled.input`
   background-color: #f9f9f9;
 `;
 
+export const NickNameInput = styled(IdInput)``;
 export const PasswordInput = styled(IdInput)``;
-
 export const SchoolInput = styled(IdInput)`
   background-image: url('${search}');
   background-color: #f9f9f9;
