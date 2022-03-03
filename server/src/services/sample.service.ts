@@ -10,7 +10,7 @@ export const makeArticles = async (req: Request, res: Response) => {
     const articles = req.body;
     console.log(articles);
     for (let i = 0; i < articles.length; i++) {
-      // const article = await Article.create(articles[i]);
+      const article = await Article.create(articles[i]);
       await Article.create(articles[i]);
     }
 

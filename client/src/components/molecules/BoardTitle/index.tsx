@@ -7,7 +7,7 @@ const BoardTitle = () => {
   return (
     <Container>
       <Name>
-        <Link to="">제목</Link>
+        <Link to="">자유게시판</Link>
       </Name>
     </Container>
   );

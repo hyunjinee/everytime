@@ -1,22 +1,11 @@
 import axios from 'axios';
-
-interface IUser {
-  id: string;
-  password: string;
-  school: string;
-  entranceYear: string;
-}
+import { IUser } from './action';
 
 const register = async (userData: IUser) => {
-  const response = await axios.post(
-    'http://localhost:3001/api/user/register',
-    userData
-  );
-
-  if (response.data) {
-    localStorage.setItem('user', JSON.stringify(response.data));
-  }
-
+  const response = await axios.post('/api/user/register', userData);
+  // if (response.data) {
+  //   localStorage.setItem('user', JSON.stringify(response.data));
+  // }
   return response.data;
 };
 

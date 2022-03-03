@@ -1,21 +1,48 @@
 import { Request, Response, NextFunction } from "express";
+import jwt from "jsonwebtoken";
+import User from "../models/user";
 
-export default (req: Request, res: Response, next: NextFunction) => {
-  let token = req.cookies.x_auth;
-  // User.findByToken(token, (err, user) => {
-  //   if (err) throw err
-  //   if (!user)
-  //     return res.json({
-  //       isAuth: false,
-  //       error: true,
-  //     })
-
-  //   req.user = user
-  //   req.token = token
-  //   next()
-  // })
+const protect = async (req: Request, res: Response, next: NextFunction) => {
+  let token;
+  if (
+    req.headers.authorization &&
+    req.headers.authorization.startsWith("Bearer")
+  ) {
+    try {
+      // ! Get token from user
+      token = req.headers.authorization.split(" ")[1];
+      // ! Verify token
+      const decoded: any = jwt.verify(token, process.env.JWT_SECRET as string);
+      req.user = await User.findOne({ id: decoded.id });
+      next();
+    } catch (error) {
+      console.log(error);
+      res.status(401);
+      throw new Error("Not authorized");
+    }
+  }
+  if (!token) {
+    res.status(401);
+    return res.status(401).json({ error: true, message: "Not authorized" });
+  }
 };
 
+export default protect;
+// export default (req: Request, res: Response, next: NextFunction) => {
+//   let token = req.cookies.x_auth;
+// User.findByToken(token, (err, user) => {
+//   if (err) throw err
+//   if (!user)
+//     return res.json({
+//       isAuth: false,
+//       error: true,
+//     })
+
+//   req.user = user
+//   req.token = token
+//   next()
+// })
+// };
 // (req, res, next) => {
 
 //   if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {

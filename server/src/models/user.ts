@@ -4,6 +4,7 @@ import jwt from "jsonwebtoken";
 export interface IUser {
   email: string;
   password: string;
+  nickname: string;
   serialize: () => object;
 }
 
@@ -30,6 +31,10 @@ const userSchema = new mongoose.Schema({
   },
   entranceYear: {
     type: String,
+  },
+  articles: {
+    type: [mongoose.Schema.Types.ObjectId],
+    ref: "Article",
   },
 });
 

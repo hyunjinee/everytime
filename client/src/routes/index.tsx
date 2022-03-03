@@ -1,29 +1,56 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import Login from '@pages/Login';
-import Test from '@pages/Test';
-import Register from '@pages/Register';
-import Board from '@pages/Board';
-import PrivateRoute from './PrivateRoutes';
+import PrivateRoute from './PrivateRoute';
+import PublicRoute from './PublicRoute';
+import Spinner from '@atoms/Spinner';
+
+const Login = React.lazy(
+  () => import(/* webpackChunkName: "Login" */ '@pages/Login')
+);
+const Register = React.lazy(
+  () => import(/* webpackChunkName: "Register" */ '@pages/Register')
+);
+const Board = React.lazy(
+  () => import(/* webpackChunkName: "Board" */ '@pages/Board')
+);
+const Test = React.lazy(
+  () => import(/* webpackChunkName: "Test" */ '@pages/Test')
+);
 
 const Router = (): JSX.Element => {
   return (
-    <Routes>
-      <Route path="/" element={<div>Hello</div>} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
-      <Route
-        path="/board"
-        element={
-          <PrivateRoute>
-            <Board />
-          </PrivateRoute>
-        }
-      />
-      <Route path="/boardtest" element={<Board />} />
-      <Route path="/test" element={<Test />} />
-    </Routes>
+    <React.Suspense fallback={<Spinner />}>
+      <Routes>
+        <Route path="/" element={<div>Hello</div>} />
+        <Route
+          path="/login"
+          element={
+            <PublicRoute>
+              <Login />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            <PublicRoute>
+              <Register />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/board"
+          element={
+            <PrivateRoute>
+              <Board />
+            </PrivateRoute>
+          }
+        />
+        <Route path="/boardtest" element={<Board />} />
+        <Route path="/test" element={<Test />} />
+      </Routes>
+    </React.Suspense>
   );
 };
 

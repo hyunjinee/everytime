@@ -1,4 +1,3 @@
-import axios from 'axios';
 import authService from './service';
 
 export const REGISTER_REQUEST = 'auth/REGISTER_REQUEST' as const;
@@ -15,6 +14,7 @@ export interface IUser {
   password: string;
   school: string;
   entranceYear: string;
+  token?: string;
 }
 
 export const reset = () => ({ type: REGISTER_RESET });
@@ -43,7 +43,6 @@ export const login = (userData: Partial<IUser>) => async (dispatch) => {
   } catch (error) {
     const message =
       (error.response && error.response.data.message) || error.message;
-    console.log(message, 'dddd');
     // const message =
     //   (error.response && error.response.data && error.response.data.message) ||
     //   error.message ||

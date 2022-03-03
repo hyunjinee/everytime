@@ -12,10 +12,7 @@ const initialData = {
   id: '',
   password: '',
 };
-/**
- * TODO
- *
- */
+
 const LoginContent = (): JSX.Element => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -35,7 +32,8 @@ const LoginContent = (): JSX.Element => {
   useEffect(() => {
     if (isError) toast.error(message);
     if (isSuccess || user) {
-      navigate('/boardtest');
+      // 뒤로가기 눌렀을 때 로그인 페이지가 안나오게
+      navigate('/board', { replace: true });
     }
   }, [dispatch, navigate, isError, message, isSuccess, user]);
 

@@ -6,7 +6,7 @@
 
 | 분야           | 사용 기술                       | 비고  |
 | -------------- | ------------------------------- | ----- |
-| FrontEnd       | React, TypeScript               |
+| FrontEnd       | React, TypeScript, Redux        |
 | BackEnd        | Express                         |
 | Database       | MongoDB                         |
 | Cloud Services | AWS EC2, AWS Cloudfront, AWS S3 |
@@ -26,6 +26,10 @@
 
 - [user create 리턴시 serialize 처리](https://hyunjinee.notion.site/user-create-1015fac4237348808fc849c037eed7e0)
 -
+
+**React**
+
+- [intersection ovserver 구현]()
 
 ## Project Planning
 

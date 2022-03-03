@@ -1,37 +1,48 @@
-import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-const useInfiniteArticle = (query, pageNumber) => {
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState(false);
-  const [articles, setArticles] = useState([]);
-  const [hasMore, setHasMore] = useState(true);
+import { RootState } from '@store/index';
+import { getAllArticles } from '@/store/article/action';
+
+const useInfiniteArticle = () => {
+  const [target, setTarget] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [page, setPage] = useState(0);
+  const dispatch = useDispatch();
+  const { message } = useSelector((state: RootState) => state.article);
 
   useEffect(() => {
-    setArticles([]);
-  }, [query]);
+    if (message !== 'No more articles') {
+      dispatch(getAllArticles(page));
+    }
+    setIsLoading(false);
+  }, [page, dispatch]);
 
   useEffect(() => {
-    setLoading(true);
-    setError(false);
-    let cancel;
-
-    axios({
-      method: 'GET',
-      cancelToken: new axios.CancelToken((c) => (cancel = c)),
-    })
-      .then((res) => {
-        setHasMore(res.data.length > 0);
-        setLoading(false);
-      })
-      .catch((e) => {
-        if (axios.isCancel(e)) return;
-        setError(true);
+    let observer: IntersectionObserver;
+    if (target) {
+      observer = new IntersectionObserver(onIntersect, {
+        threshold: 1,
       });
-    return cancel();
-  }, [query, pageNumber]);
+      observer.observe(target);
+    }
+  }, [target]);
 
-  return { loading, error, articles, hasMore };
+  const getMoreArticle = () => {
+    setIsLoading(true);
+    setPage((page) => page + 1);
+  };
+
+  const onIntersect = ([entry], observer: IntersectionObserver) => {
+    if (entry.isIntersecting && !isLoading) {
+      observer.unobserve(entry.target);
+      getMoreArticle();
+      observer.observe(entry.target);
+    }
+  };
+
+  return { setTarget, isLoading };
 };
 
 export default useInfiniteArticle;

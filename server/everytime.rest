@@ -22,3 +22,7 @@ Content-Type: application/json
 GET {{endpoint}}/user/test
 
 
+### 
+# infinite query testing 
+
+GET {{endpoint}}/article/getAllArticles?page=3

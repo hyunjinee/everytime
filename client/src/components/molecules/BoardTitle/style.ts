@@ -5,6 +5,9 @@ export const Container = styled.div`
   padding: 15px;
   margin-top: 25px;
   margin-bottom: 5px;
+  @media only screen and (max-width: 640px) {
+    display: none;
+  }
 `;
 
 export const Name = styled.h1`

@@ -5,6 +5,7 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "esModuleInterop": true,
+    "downlevelIteration": true,
     "rootDir": "./",
     "outDir": "dist",
     "allowJs": true,
