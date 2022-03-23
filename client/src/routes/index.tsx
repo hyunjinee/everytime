@@ -47,8 +47,17 @@ const Router = (): JSX.Element => {
             </PrivateRoute>
           }
         />
+        <Route
+          path="/board/:articleId"
+          element={
+            <>
+              <Test />
+            </>
+          }
+        />
         <Route path="/boardtest" element={<Board />} />
         <Route path="/test" element={<Test />} />
+        <Route path="*" element={<Board />} />
       </Routes>
     </React.Suspense>
   );

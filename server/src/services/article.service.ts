@@ -7,7 +7,6 @@ import Article from "../models/article";
 const { BAD_REQUEST, OK } = StatusCodes;
 
 export const getAllArticles = async (req: Request, res: Response) => {
-  console.log(req.query, "?");
   const currentPage: number = (req.query.page || 0) as number;
   const postsPerPage = 20;
   try {

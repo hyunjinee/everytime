@@ -2,8 +2,6 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 
-import { fetchUsers } from '@store/user/action';
-
 const Test = (): JSX.Element => {
   const dispatch = useDispatch();
   const users = useSelector((state) => state);

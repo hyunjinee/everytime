@@ -12,6 +12,14 @@ const articleSchema = new mongoose.Schema({
   anonymous: {
     type: Boolean,
   },
+  vote: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+  },
+  comment: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Comment",
+  },
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
@@ -24,6 +32,10 @@ const articleSchema = new mongoose.Schema({
     type: Date,
     default: Date.now(),
   },
+});
+
+articleSchema.pre("findOneAndDelete", function (next) {
+  const article = this;
 });
 
 export default mongoose.model("Article", articleSchema);

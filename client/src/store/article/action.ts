@@ -13,6 +13,8 @@ export interface IArticle {
   _id: string;
   title: string;
   content: string;
+  vote?: string;
+  comment?: string;
 }
 
 export const reset = () => ({ type: ARTICLE_RESET });

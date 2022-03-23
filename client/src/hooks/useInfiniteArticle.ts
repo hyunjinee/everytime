@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -42,7 +41,7 @@ const useInfiniteArticle = () => {
     }
   };
 
-  return { setTarget, isLoading };
+  return [ setTarget, isLoading ];
 };
 
 export default useInfiniteArticle;

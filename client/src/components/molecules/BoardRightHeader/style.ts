@@ -25,4 +25,5 @@ export const Chat = styled.div`
 
 export const MyPage = styled(Chat)`
   background-image: url(${my});
+  margin-left: 4px;
 `;

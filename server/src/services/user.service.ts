@@ -46,8 +46,8 @@ export const findOneUser = async (req: Request, res: Response) => {
 export const createUser = async (req: Request, res: Response) => {
   const userData = req.body;
   try {
-    // if (Object.keys(userData).length === 0)
-    //   throw new Error("no user data in body");
+    if (Object.keys(userData).length === 0)
+      throw new Error("no user data in body");
     if (Object.keys(userData).length === 0)
       return res
         .status(BAD_REQUEST)

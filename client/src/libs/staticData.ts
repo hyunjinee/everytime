@@ -14,7 +14,6 @@ export const monthList = [
 ];
 
 export const dayList = Array.from(Array(31), (_, i) => String(i + 1));
-// export const yearList = Array.from(Array(123), (_, i) => String(2022 - i));
 
 export const yearList = Array.from(Array(30), (_, i) => {
   return { id: String(2022 - i), value: String(2022 - i) + '학번' };
