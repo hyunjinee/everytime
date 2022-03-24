@@ -92,4 +92,4 @@ const BoardForm = ({ writeMode }: Props): JSX.Element => {
   );
 };
 
-export default BoardForm;
+export default React.memo(BoardForm);

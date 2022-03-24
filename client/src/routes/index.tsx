@@ -17,6 +17,9 @@ const Board = React.lazy(
 const Test = React.lazy(
   () => import(/* webpackChunkName: "Test" */ '@pages/Test')
 );
+const Detail = React.lazy(
+  () => import(/* webpackChunkName: "Detail" */ '@pages/Detail')
+);
 
 const Router = (): JSX.Element => {
   return (
@@ -47,16 +50,9 @@ const Router = (): JSX.Element => {
             </PrivateRoute>
           }
         />
-        <Route
-          path="/board/:articleId"
-          element={
-            <>
-              <Test />
-            </>
-          }
-        />
+        <Route path="/board/:articleNumber" element={<Detail />} />
         <Route path="/boardtest" element={<Board />} />
-        <Route path="/test" element={<Test />} />
+        <Route path="/test" element={<Detail />} />
         <Route path="*" element={<Board />} />
       </Routes>
     </React.Suspense>

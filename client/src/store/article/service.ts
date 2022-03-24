@@ -33,6 +33,20 @@ const getAllArticles = async (token: string, page: number) => {
   return response.data;
 };
 
+const getOneArticle = async (token: string, articleNumber: number | string) => {
+  const config = {
+    headers: {
+      Authoriaztion: `Bearer ${token}`,
+    },
+  };
+
+  const response = await axios.get(
+    `/api/article/getOneArticle/${articleNumber}`,
+    config
+  );
+  return response.data;
+};
+
 // const register = async (userData: IUser) => {
 //   const response = await axios.post(
 //     'http://localhost:3001/api/user/register',
@@ -49,6 +63,7 @@ const getAllArticles = async (token: string, page: number) => {
 const articleService = {
   createArticle,
   getAllArticles,
+  getOneArticle,
 };
 
 export default articleService;

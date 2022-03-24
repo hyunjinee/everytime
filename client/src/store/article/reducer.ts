@@ -1,7 +1,7 @@
 import {
+  ARTICLE_RESET,
   CREATE_ARTICLE_FAILURE,
   CREATE_ARTICLE_REQUEST,
-  ARTICLE_RESET,
   CREATE_ARTICLE_SUCCESS,
 } from './action';
 import {
@@ -9,6 +9,9 @@ import {
   GET_ARTICLE_REQUEST,
   GET_ARTICLE_SUCCESS,
   GET_ARTICLE_FAILURE,
+  GET_ONE_ARTICLE_FAILURE,
+  GET_ONE_ARTICLE_REQUEST,
+  GET_ONE_ARTICLE_SUCCESS,
 } from './action';
 
 export interface ArticleState {
@@ -17,6 +20,7 @@ export interface ArticleState {
   isSuccess: boolean;
   isError: boolean;
   message: string;
+  article?: IArticle;
 }
 
 const initialState = {
@@ -25,6 +29,7 @@ const initialState = {
   isSuccess: false,
   isLoading: false,
   message: '',
+  article: null,
 };
 
 const articleReducer = (state: ArticleState = initialState, action: any) => {
@@ -71,9 +76,28 @@ const articleReducer = (state: ArticleState = initialState, action: any) => {
         isError: true,
         message: action.payload,
       };
+    case GET_ONE_ARTICLE_REQUEST:
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case GET_ONE_ARTICLE_SUCCESS:
+      return {
+        ...state,
+        isSuccess: true,
+        isLoading: false,
+        article: action.payload,
+      };
+    case GET_ONE_ARTICLE_FAILURE:
+      return {
+        ...state,
+        isSuccess: false,
+        isLoading: false,
+        isError: true,
+        message: action.payload,
+      };
     case ARTICLE_RESET:
       return initialState;
-
     default:
       return initialState;
   }

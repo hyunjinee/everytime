@@ -51,6 +51,9 @@ export const Content = styled.textarea`
   color: #292929;
   font-size: 14px;
   resize: none;
+  @media only screen and (max-width: 640px) {
+    height: 180px;
+  }
 `;
 
 export const OptionContainer = styled.ul``;

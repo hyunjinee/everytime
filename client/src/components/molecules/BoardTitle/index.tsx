@@ -13,4 +13,4 @@ const BoardTitle = () => {
   );
 };
 
-export default BoardTitle;
+export default React.memo(BoardTitle);

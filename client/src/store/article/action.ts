@@ -6,15 +6,24 @@ export const CREATE_ARTICLE_FAILURE = 'article/CREATE_ARTICLE_FAILURE' as const;
 export const GET_ARTICLE_REQUEST = 'article/GET_ARTICLE_REQUEST' as const;
 export const GET_ARTICLE_SUCCESS = 'article/GET_ARTICLE_SUCCESS' as const;
 export const GET_ARTICLE_FAILURE = 'article/GET_ARTICLE_FAILURE' as const;
+export const GET_ONE_ARTICLE_REQUEST =
+  'article/GET_ONE_ARTICLE_REQUEST' as const;
+export const GET_ONE_ARTICLE_SUCCESS =
+  'article/GET_ONE_ARTICLE_SUCCESS' as const;
+export const GET_ONE_ARTICLE_FAILURE =
+  'article/GET_ONE_ARTICLE_FAILURE' as const;
 
 export const ARTICLE_RESET = 'article/ARTICLE_RESET' as const;
 
 export interface IArticle {
   _id: string;
+  articleNumber: any;
   title: string;
   content: string;
   vote?: string;
   comment?: string;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 export const reset = () => ({ type: ARTICLE_RESET });
@@ -49,3 +58,20 @@ export const getAllArticles = (page: number) => async (dispatch, getState) => {
     dispatch({ type: GET_ARTICLE_FAILURE, payload: message });
   }
 };
+
+export const getOneArticle =
+  (articleNumber: string | number) => async (dispatch, getState) => {
+    dispatch({ type: GET_ONE_ARTICLE_REQUEST });
+    const token =
+      getState().auth.user?.token ||
+      JSON.parse(localStorage.getItem('user'))?.token;
+    try {
+      const article = await articleService.getOneArticle(token, articleNumber);
+      console.log(article, 'article');
+      dispatch({ type: GET_ONE_ARTICLE_SUCCESS, payload: article });
+    } catch (error) {
+      const message =
+        (error.response && error.response.data.message) || error.message;
+      dispatch({ type: GET_ONE_ARTICLE_FAILURE, payload: message });
+    }
+  };

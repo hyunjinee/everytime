@@ -11,27 +11,39 @@ export const Container = styled.div`
 
 export const Title = styled.h2`
   font-size: 14px;
-  font-weight: normal;
-  color: #292929;
   margin-bottom: 5px;
   line-height: 18px;
+  font-weight: normal;
+  color: #292929;
 `;
 
 export const Content = styled.p`
   margin-bottom: 5px;
   max-height: 30px;
   line-height: 15px;
+  font-size: 12px;
   white-space: normal;
   overflow: hidden;
 `;
 
 export const Time = styled.time`
-  float: left;
   margin-right: 5px;
+  height: 15px;
+  line-height: 15px;
+  font-size: 11px;
+  float: left;
+  color: #a6a6a6;
 `;
 
 export const Anonymous = styled.h3`
   float: left;
+  max-width: 90px;
+  height: 15px;
+  line-height: 15px;
+  font-size: 11px;
+  font-weight: normal;
+  letter-spacing: 0;
+  color: #292929;
 `;
 
 export const Status = styled.ul`

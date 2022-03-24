@@ -1,7 +1,3 @@
-// import React from 'react';
-// // import { action } from '@storybook/addon-actions';
-// import Button from '.';
-
 import React from 'react';
 import Button from '.';
 
@@ -19,5 +15,3 @@ export const WithSomeEmoji = () => (
     </span>
   </Button>
 );
-
-// export const

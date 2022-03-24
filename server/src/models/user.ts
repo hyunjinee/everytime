@@ -5,6 +5,9 @@ export interface IUser {
   email: string;
   password: string;
   nickname: string;
+  school: string;
+  entranceYear: string;
+  articles: string[];
   serialize: () => object;
 }
 
@@ -91,8 +94,8 @@ userSchema.statics.findByToken = function (token: string, callback) {
 };
 
 // nickname으로 사용자 찾을 수 있는 메서드
-userSchema.statics.findByNickname = function (nickname: string) {
-  return this.findOne({ nickname });
+userSchema.statics.findByNickname = async function (nickname: string) {
+  return await this.findOne({ nickname });
 };
 /*
  * 모델 메서드: 모델에서 사용할 수 있는 함수를 의미하며 두가지 종류가 있습니다.

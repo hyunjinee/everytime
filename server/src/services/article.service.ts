@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-
 import StatusCodes from "http-status-codes";
 
 import Article from "../models/article";
@@ -23,6 +22,7 @@ export const getAllArticles = async (req: Request, res: Response) => {
 export const createArticle = async (req: Request, res: Response) => {
   try {
     const article = await Article.create(req.body);
+    console.log(article);
     return res.status(OK).json(article);
   } catch (error) {
     return res
@@ -31,6 +31,16 @@ export const createArticle = async (req: Request, res: Response) => {
   }
 };
 
-export const getOneArticle = async (req: Request, res: Response) => {};
+export const getOneArticle = async (req: Request, res: Response) => {
+  try {
+    const article = await Article.findByArticleNumber(req.params.articleNumber);
+    console.log(article);
+    return res.status(OK).json(article);
+  } catch (error) {
+    return res
+      .status(BAD_REQUEST)
+      .json({ error: true, message: "글 조회에 실패했습니다. " });
+  }
+};
 
 export const updateArticle = async (req: Request, res: Response) => {};

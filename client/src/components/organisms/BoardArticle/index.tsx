@@ -1,4 +1,5 @@
 import React from 'react';
+import dayjs from 'dayjs';
 import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -24,16 +25,16 @@ const BoardArticle = (): JSX.Element => {
         articles.map((article: IArticle, index: number) => (
           <Container
             key={article._id + index}
-            onClick={() => navigate('/board/1')}
+            onClick={() => navigate(`/board/${article.articleNumber}`)}
           >
-            <Link to="">
+            <Link to="" style={{ padding: '15px' }}>
               <Title>{article.title}</Title>
               <Content>
                 {article.content.length > 50
                   ? article.content.slice(0, 50) + '...'
                   : article.content}
               </Content>
-              <Time>방금</Time>
+              <Time>{dayjs(article.createdAt as Date).fromNow()}</Time>
               <Anonymous>익명</Anonymous>
               <Status>
                 <Vote>0</Vote>
