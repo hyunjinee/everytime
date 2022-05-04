@@ -22,8 +22,8 @@
 
 ## 프로젝트 하면서 배운 것들
 
-- 📌 [개발기록](https://hyunjinee.notion.site/96b89cf3429c450eb049e8aad5036382)
+- 📌 [개발기록](https://hyunjinee.notion.site/fc06ff8586254bb5936ae826eb069af8)
 
 ## Project Planning
 
-- 📝 [백로그](https://docs.google.com/spreadsheets/d/1lDuBAf1iXCiSSfimQScUZtsrgUt_v_2oMPkzOPNM9L4/edit#gid=0)
+<!-- - 📝 [백로그](https://docs.google.com/spreadsheets/d/1lDuBAf1iXCiSSfimQScUZtsrgUt_v_2oMPkzOPNM9L4/edit#gid=0) -->
