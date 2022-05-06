@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 interface InitialData<T> {
   initialValues: T;
-  onSubmit: (values: T) => void;
+  onSubmit: (values: T) => Promise<void>;
   validate?: (errors: T) => Partial<T>;
 }
 
